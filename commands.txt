@@ -1,0 +1,2 @@
+ansible-inventory --list # show all host from inventory file
+ansible --version # show config file and version
