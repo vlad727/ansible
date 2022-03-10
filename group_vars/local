@@ -1,0 +1,2 @@
+ansible_user: vlad
+ansible_ssh_key_file: /home/vlad/.ssh/ubt_id_rsa
