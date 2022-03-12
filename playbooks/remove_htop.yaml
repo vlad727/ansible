@@ -1,0 +1,9 @@
+- name: Remove packages
+  hosts: centos
+  become: yes
+
+  tasks:
+  - name: Remove the htop package
+    yum:
+      name: htop
+      state: absent

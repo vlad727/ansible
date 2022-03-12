@@ -1,0 +1,22 @@
+- name: Rpm hosts
+  hosts: centos
+  become: yes
+
+  tasks:
+
+  - name: Install epel-release
+    yum:
+      name: epel-release
+      state: latest
+
+  - name: Update
+    yum:
+      name: "*"
+      state: latest
+
+  - name: Install a list of packages
+    yum:
+      pkg:
+      - net-tools
+      - vim
+      - htop

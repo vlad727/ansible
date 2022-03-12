@@ -1,0 +1,33 @@
+- name: Ping Servers
+  hosts: local
+  become: yes
+  vars:
+    packages:
+      - apache2
+      - htop
+      - tree
+      - rsync
+
+    file_src: /home/vlad/ansible/file_var.txt
+    file_dest: /tmp
+    modes: 0644
+    owner: vlad
+    group: vlad
+
+  tasks:
+
+  - name: Taks ping
+    ping:
+
+  - name: Instal Apache
+    apt:
+      pkg: "{{ packages }}"
+      state: present
+
+  - name: Copy files from diff dirs
+    copy:
+      src: "{{ file_src }}"
+      dest: "{{ file_dest }}"
+      mode: "{{ modes }}"
+      owner: "{{ owner }}"
+      group: "{{ group }}"

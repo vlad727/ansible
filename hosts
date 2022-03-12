@@ -1,0 +1,16 @@
+# list of hosts
+[stage]
+centos7 ansible_host=192.168.82.65 
+
+[prod]
+centos7-prod-1 ansible_host=192.168.82.62
+centos7-prod-2 ansible_host=192.168.82.63
+
+[local]
+ubt ansible_host=192.168.82.86
+
+[centos:children]
+stage 
+prod
+
+

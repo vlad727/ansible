@@ -1,2 +1,7 @@
 ansible-inventory --list # show all host from inventory file
 ansible --version # show config file and version
+ansible all -m setup # gathers facts about remote hosts
+ansible local -m file -a "path=/root/ansible_file.txt state=touch"  -b # module file create file -b "become" use sudo 
+ansible local  -m copy -a "src=copy_file dest=/home mode=777" -b # copy file to remoute 
+/etc/sudoers.d/no_passwd %vladALL=(ALL)NOPASSWD: ALL
+ansible centos -m debug -a "var=my_var" # get vars from group_vars or files ansible centos -m debug -a "var=ansible_host"

@@ -1,0 +1,19 @@
+- name: Ping Servers
+  hosts: local
+  become: yes
+  vars:
+    packages:
+      - apache2
+      - htop
+      - tree
+      - rsync
+
+  tasks:
+
+  - name: Taks ping
+    ping:
+
+  - name: Instal Apache
+    apt:
+      pkg: "{{ packages }}"
+      state: present

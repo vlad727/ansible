@@ -1,0 +1,13 @@
+- name: Copy file to remoute hosts
+  hosts: all
+  become: yes
+
+  tasks:
+
+  - name: Copy files
+    copy:
+      src: /home/vlad/ansible/test-file.txt
+      dest: /home/
+      owner: vlad
+      group: vlad
+      mode: '0766'
