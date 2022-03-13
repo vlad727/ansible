@@ -1,0 +1,31 @@
+- name: Messages
+  hosts: centos
+  become: yes
+
+  vars:
+    var1: stage
+    var2: release
+    var3: kernel
+
+  tasks:
+    - name: Print vars
+      debug:
+        var: var1
+    - debug:
+        msg: "Red Hat {{var2}}"
+    - debug:
+        msg: "Red Hat {{var2}} hostname {{var1}} version "
+
+    - set_fact:
+        message: "Red Hat {{var2}} hostname {{var1}} version "
+    - debug:
+        var: message
+
+    - debug:
+        var: ansible_nodename
+    - debug:
+        msg: "Hostname {{ansible_nodename}} manager {{ansible_pkg_mgr}}"
+    - shell: id user1
+      register: getId
+    - debug:
+        msg: "Id for user1 {{getId}}"

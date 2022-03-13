@@ -1,0 +1,28 @@
+- name: Blocks and when
+  hosts: centos
+  become: yes
+
+  vars:
+
+  tasks:
+    - block:
+      - name: Install packages
+        yum:
+          pkg:
+            - tree
+            - nmon
+            - htop
+          state: present
+
+      - name: Create dir
+        file:
+          path: /tmp/dir1
+          state: directory
+
+      when: ansible_hostname == "centos_stage"
+
+    - name: Copy file
+      copy:
+        src: /home/vlad/ansible/my_file.txt
+        dest: /tmp
+      when: ansible_hostname == "centos-prod-1"

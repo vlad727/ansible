@@ -1,10 +1,10 @@
 # list of hosts
 [stage]
-centos7 ansible_host=192.168.82.65 
+centos7 ansible_host=192.168.82.65 inv_user=client1 
 
 [prod]
-centos7-prod-1 ansible_host=192.168.82.62
-centos7-prod-2 ansible_host=192.168.82.63
+centos7-prod-1 ansible_host=192.168.82.62 inv_user=client2
+centos7-prod-2 ansible_host=192.168.82.63 inv_user=client3
 
 [local]
 ubt ansible_host=192.168.82.86

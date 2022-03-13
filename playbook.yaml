@@ -1,0 +1,22 @@
+- name: Test playbook
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Install Software
+    yum:
+      name: net-tools
+      state: present
+
+  - name: Remove Software
+    yum:
+      name: htop
+      state: absent
+
+  - name: Copy files
+    copy:
+      src: /home/vlad/file.txt
+      dest: /home/vlad/
+      mode: 0644
+      owner: vlad
+      group: vlad

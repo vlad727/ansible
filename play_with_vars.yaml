@@ -10,7 +10,7 @@
 
     file_src: /home/vlad/ansible/file_var.txt
     file_dest: /tmp
-    modes: 0644
+    modes:
     owner: vlad
     group: vlad
 
