@@ -1,0 +1,37 @@
+---
+- name: Playbook with vars
+  hosts: centos
+  become: yes
+
+  vars:
+    message1: user
+    message2: hostname
+    message3: my_secret
+
+
+  tasks:
+    - name: Print secret
+      debug:
+        var: message3
+
+    - name: Print var hostname
+      debug:
+        msg: "This is server {{ ansible_hostname }}"
+
+    - name: Set new var
+      set_fact: all_vars="{{ message1 }} {{ message2 }} {{ message3 }}"
+
+    - name: Print new var
+      debug:
+        var: all_vars
+
+    - name: Print vars from setup
+      debug:
+        var: ansible_interfaces
+
+    - name: Register
+      shell: uptime
+      register: results
+
+    - debug:
+        var: results.stdout
